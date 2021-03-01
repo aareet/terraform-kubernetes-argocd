@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    kubernetes-alpha = {
+      source  = "hashicorp/kubernetes-alpha"
+      version = ">= 0.3.0"
+    }
+  }
+
+}
 resource "kubernetes_manifest" "customresourcedefinition_applications_argoproj_io" {
   provider = kubernetes-alpha
 
