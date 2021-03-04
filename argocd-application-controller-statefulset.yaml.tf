@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "statefulset_argocd_application_controller" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-application-controller"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
       "replicas" = 1

@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "serviceaccount_argocd_server" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-server"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
   }
 }

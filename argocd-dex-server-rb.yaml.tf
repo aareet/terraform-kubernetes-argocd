@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "rolebinding_argocd_dex_server" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-dex-server"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"

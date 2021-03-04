@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "role_argocd_redis" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-redis"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "rules" = [
       {

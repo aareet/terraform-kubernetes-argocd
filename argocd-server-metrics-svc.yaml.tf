@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "service_argocd_server_metrics" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-server-metrics"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
       "ports" = [

@@ -10,7 +10,7 @@ resource "kubernetes_manifest" "secret_argocd_secret" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-secret"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "type" = "Opaque"
   }

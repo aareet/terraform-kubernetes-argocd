@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "rolebinding_argocd_redis" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-redis"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"

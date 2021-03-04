@@ -10,7 +10,7 @@ resource "kubernetes_manifest" "configmap_argocd_gpg_keys_cm" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-gpg-keys-cm"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
   }
 }

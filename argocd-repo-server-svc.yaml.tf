@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "service_argocd_repo_server" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-repo-server"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
       "ports" = [

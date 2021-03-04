@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "configmap_argocd_tls_certs_cm" {
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "argocd-tls-certs-cm"
-      "namespace" = "default"
+      "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
   }
 }
