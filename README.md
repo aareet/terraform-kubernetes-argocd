@@ -1,12 +1,8 @@
 A simple module to install ArgoCD into the cluster. This is an HCL translation of https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-
-This module requires the 0.3.0 version of the kubernetes-alpha provider that is currently unreleased.
-
+This module requires the 0.3.0 version of the kubernetes-alpha provider.
 
 Usage:
-
-Download this module into your working directory
 
 ```
 # main.tf
@@ -15,6 +11,7 @@ provider "kubernetes-alpha" {
 }
 
 module "argocd" {
-  source    = "./argocd-module"
+  source    = "aareet/argocd/kubernetes"
+  namespace = "argocd"
 }
 ```
