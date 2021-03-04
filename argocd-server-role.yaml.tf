@@ -3,14 +3,14 @@ resource "kubernetes_manifest" "role_argocd_server" {
 
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "Role"
+    "kind"       = "Role"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "server"
-        "app.kubernetes.io/name" = "argocd-server"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-server"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-server"
+      "name"      = "argocd-server"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "rules" = [

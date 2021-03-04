@@ -3,14 +3,14 @@ resource "kubernetes_manifest" "deployment_argocd_repo_server" {
 
   manifest = {
     "apiVersion" = "apps/v1"
-    "kind" = "Deployment"
+    "kind"       = "Deployment"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "repo-server"
-        "app.kubernetes.io/name" = "argocd-repo-server"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-repo-server"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-repo-server"
+      "name"      = "argocd-repo-server"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
@@ -63,7 +63,7 @@ resource "kubernetes_manifest" "deployment_argocd_repo_server" {
                 "--redis",
                 "argocd-redis:6379",
               ]
-              "image" = "argoproj/argocd:v1.8.6"
+              "image"           = "argoproj/argocd:v1.8.6"
               "imagePullPolicy" = "Always"
               "livenessProbe" = {
                 "failureThreshold" = 3
@@ -72,16 +72,16 @@ resource "kubernetes_manifest" "deployment_argocd_repo_server" {
                   "port" = 8084
                 }
                 "initialDelaySeconds" = 30
-                "periodSeconds" = 5
+                "periodSeconds"       = 5
               }
               "name" = "argocd-repo-server"
               "ports" = [
                 {
-		  "protocol" = "TCP"
+                  "protocol"      = "TCP"
                   "containerPort" = 8081
                 },
                 {
-		  "protocol" = "TCP"
+                  "protocol"      = "TCP"
                   "containerPort" = 8084
                 },
               ]
@@ -91,24 +91,24 @@ resource "kubernetes_manifest" "deployment_argocd_repo_server" {
                   "port" = 8084
                 }
                 "initialDelaySeconds" = 5
-                "periodSeconds" = 10
+                "periodSeconds"       = 10
               }
               "volumeMounts" = [
                 {
                   "mountPath" = "/app/config/ssh"
-                  "name" = "ssh-known-hosts"
+                  "name"      = "ssh-known-hosts"
                 },
                 {
                   "mountPath" = "/app/config/tls"
-                  "name" = "tls-certs"
+                  "name"      = "tls-certs"
                 },
                 {
                   "mountPath" = "/app/config/gpg/source"
-                  "name" = "gpg-keys"
+                  "name"      = "gpg-keys"
                 },
                 {
                   "mountPath" = "/app/config/gpg/keys"
-                  "name" = "gpg-keyring"
+                  "name"      = "gpg-keyring"
                 },
               ]
             },
@@ -134,7 +134,7 @@ resource "kubernetes_manifest" "deployment_argocd_repo_server" {
             },
             {
               "emptyDir" = {}
-              "name" = "gpg-keyring"
+              "name"     = "gpg-keyring"
             },
           ]
         }

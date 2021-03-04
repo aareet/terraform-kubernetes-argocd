@@ -3,10 +3,10 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
 
   manifest = {
     "apiVersion" = "apiextensions.k8s.io/v1beta1"
-    "kind" = "CustomResourceDefinition"
+    "kind"       = "CustomResourceDefinition"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/name" = "appprojects.argoproj.io"
+        "app.kubernetes.io/name"    = "appprojects.argoproj.io"
         "app.kubernetes.io/part-of" = "argocd"
       }
       "name" = "appprojects.argoproj.io"
@@ -14,9 +14,9 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
     "spec" = {
       "group" = "argoproj.io"
       "names" = {
-        "kind" = "AppProject"
+        "kind"     = "AppProject"
         "listKind" = "AppProjectList"
-        "plural" = "appprojects"
+        "plural"   = "appprojects"
         "shortNames" = [
           "appproj",
           "appprojs",
@@ -30,11 +30,11 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
           "properties" = {
             "apiVersion" = {
               "description" = "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
-              "type" = "string"
+              "type"        = "string"
             }
             "kind" = {
               "description" = "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
-              "type" = "string"
+              "type"        = "string"
             }
             "metadata" = {
               "type" = "object"
@@ -84,7 +84,7 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                 }
                 "description" = {
                   "description" = "Description contains optional project description"
-                  "type" = "string"
+                  "type"        = "string"
                 }
                 "destinations" = {
                   "description" = "Destinations contains list of destinations available for deployment"
@@ -93,15 +93,15 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                     "properties" = {
                       "name" = {
                         "description" = "Name of the destination cluster which can be used instead of server (url) field"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                       "namespace" = {
                         "description" = "Namespace overrides the environment namespace value in the ksonnet app.yaml"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                       "server" = {
                         "description" = "Server overrides the environment server value in the ksonnet app.yaml"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                     }
                     "type" = "object"
@@ -170,7 +170,7 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                     }
                     "warn" = {
                       "description" = "Warn indicates if warning condition should be created for apps which have orphaned resources"
-                      "type" = "boolean"
+                      "type"        = "boolean"
                     }
                   }
                   "type" = "object"
@@ -182,7 +182,7 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                     "properties" = {
                       "description" = {
                         "description" = "Description is a description of the role"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                       "groups" = {
                         "description" = "Groups are a list of OIDC group claims bound to this role"
@@ -198,11 +198,11 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                           "properties" = {
                             "exp" = {
                               "format" = "int64"
-                              "type" = "integer"
+                              "type"   = "integer"
                             }
                             "iat" = {
                               "format" = "int64"
-                              "type" = "integer"
+                              "type"   = "integer"
                             }
                             "id" = {
                               "type" = "string"
@@ -217,7 +217,7 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                       }
                       "name" = {
                         "description" = "Name is a name for this role"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                       "policies" = {
                         "description" = "Policies Stores a list of casbin formated strings that define access policies for the role in the project"
@@ -241,7 +241,7 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                     "properties" = {
                       "keyID" = {
                         "description" = "The ID of the key in hexadecimal notation"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                     }
                     "required" = [
@@ -279,15 +279,15 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                       }
                       "duration" = {
                         "description" = "Duration is the amount of time the sync window will be open"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                       "kind" = {
                         "description" = "Kind defines if the window allows or blocks syncs"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                       "manualSync" = {
                         "description" = "ManualSync enables manual syncs when they would otherwise be blocked"
-                        "type" = "boolean"
+                        "type"        = "boolean"
                       }
                       "namespaces" = {
                         "description" = "Namespaces contains a list of namespaces that the window will apply to"
@@ -298,7 +298,7 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
                       }
                       "schedule" = {
                         "description" = "Schedule is the time the window will begin, specified in cron format"
-                        "type" = "string"
+                        "type"        = "string"
                       }
                     }
                     "type" = "object"
@@ -319,8 +319,8 @@ resource "kubernetes_manifest" "customresourcedefinition_appprojects_argoproj_io
       "version" = "v1alpha1"
       "versions" = [
         {
-          "name" = "v1alpha1"
-          "served" = true
+          "name"    = "v1alpha1"
+          "served"  = true
           "storage" = true
         },
       ]

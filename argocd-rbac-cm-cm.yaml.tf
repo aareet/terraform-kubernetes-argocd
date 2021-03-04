@@ -3,13 +3,13 @@ resource "kubernetes_manifest" "configmap_argocd_rbac_cm" {
 
   manifest = {
     "apiVersion" = "v1"
-    "kind" = "ConfigMap"
+    "kind"       = "ConfigMap"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/name" = "argocd-rbac-cm"
+        "app.kubernetes.io/name"    = "argocd-rbac-cm"
         "app.kubernetes.io/part-of" = "argocd"
       }
-      "name" = "argocd-rbac-cm"
+      "name"      = "argocd-rbac-cm"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
   }

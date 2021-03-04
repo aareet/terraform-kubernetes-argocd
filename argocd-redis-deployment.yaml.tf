@@ -3,14 +3,14 @@ resource "kubernetes_manifest" "deployment_argocd_redis" {
 
   manifest = {
     "apiVersion" = "apps/v1"
-    "kind" = "Deployment"
+    "kind"       = "Deployment"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "redis"
-        "app.kubernetes.io/name" = "argocd-redis"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-redis"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-redis"
+      "name"      = "argocd-redis"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
@@ -62,22 +62,22 @@ resource "kubernetes_manifest" "deployment_argocd_redis" {
                 "--appendonly",
                 "no",
               ]
-              "image" = "redis:5.0.10-alpine"
+              "image"           = "redis:5.0.10-alpine"
               "imagePullPolicy" = "Always"
-              "name" = "redis"
+              "name"            = "redis"
               "ports" = [
                 {
-		  "protocol" = "TCP"
+                  "protocol"      = "TCP"
                   "containerPort" = 6379
                 },
               ]
             },
           ]
           "securityContext" = {
-            "fsGroup" = 1000
-            "runAsGroup" = 1000
+            "fsGroup"      = 1000
+            "runAsGroup"   = 1000
             "runAsNonRoot" = true
-            "runAsUser" = 1000
+            "runAsUser"    = 1000
           }
           "serviceAccountName" = "argocd-redis"
         }

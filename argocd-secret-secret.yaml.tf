@@ -3,13 +3,13 @@ resource "kubernetes_manifest" "secret_argocd_secret" {
 
   manifest = {
     "apiVersion" = "v1"
-    "kind" = "Secret"
+    "kind"       = "Secret"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/name" = "argocd-secret"
+        "app.kubernetes.io/name"    = "argocd-secret"
         "app.kubernetes.io/part-of" = "argocd"
       }
-      "name" = "argocd-secret"
+      "name"      = "argocd-secret"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "type" = "Opaque"

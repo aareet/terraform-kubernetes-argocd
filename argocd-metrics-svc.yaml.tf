@@ -3,22 +3,22 @@ resource "kubernetes_manifest" "service_argocd_metrics" {
 
   manifest = {
     "apiVersion" = "v1"
-    "kind" = "Service"
+    "kind"       = "Service"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "metrics"
-        "app.kubernetes.io/name" = "argocd-metrics"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-metrics"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-metrics"
+      "name"      = "argocd-metrics"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
       "ports" = [
         {
-          "name" = "metrics"
-          "port" = 8082
-          "protocol" = "TCP"
+          "name"       = "metrics"
+          "port"       = 8082
+          "protocol"   = "TCP"
           "targetPort" = 8082
         },
       ]

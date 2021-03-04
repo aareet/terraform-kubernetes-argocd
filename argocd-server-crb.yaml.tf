@@ -3,24 +3,24 @@ resource "kubernetes_manifest" "clusterrolebinding_argocd_server" {
 
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "ClusterRoleBinding"
+    "kind"       = "ClusterRoleBinding"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "server"
-        "app.kubernetes.io/name" = "argocd-server"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-server"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
       "name" = "argocd-server"
     }
     "roleRef" = {
       "apiGroup" = "rbac.authorization.k8s.io"
-      "kind" = "ClusterRole"
-      "name" = "argocd-server"
+      "kind"     = "ClusterRole"
+      "name"     = "argocd-server"
     }
     "subjects" = [
       {
-        "kind" = "ServiceAccount"
-        "name" = "argocd-server"
+        "kind"      = "ServiceAccount"
+        "name"      = "argocd-server"
         "namespace" = "argocd"
       },
     ]

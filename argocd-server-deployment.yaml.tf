@@ -3,14 +3,14 @@ resource "kubernetes_manifest" "deployment_argocd_server" {
 
   manifest = {
     "apiVersion" = "apps/v1"
-    "kind" = "Deployment"
+    "kind"       = "Deployment"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "server"
-        "app.kubernetes.io/name" = "argocd-server"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-server"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-server"
+      "name"      = "argocd-server"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
@@ -61,7 +61,7 @@ resource "kubernetes_manifest" "deployment_argocd_server" {
                 "--staticassets",
                 "/shared/app",
               ]
-              "image" = "argoproj/argocd:v1.8.6"
+              "image"           = "argoproj/argocd:v1.8.6"
               "imagePullPolicy" = "Always"
               "livenessProbe" = {
                 "httpGet" = {
@@ -69,16 +69,16 @@ resource "kubernetes_manifest" "deployment_argocd_server" {
                   "port" = 8080
                 }
                 "initialDelaySeconds" = 3
-                "periodSeconds" = 30
+                "periodSeconds"       = 30
               }
               "name" = "argocd-server"
               "ports" = [
                 {
-		  "protocol" = "TCP"
+                  "protocol"      = "TCP"
                   "containerPort" = 8080
                 },
                 {
-		  "protocol" = "TCP"
+                  "protocol"      = "TCP"
                   "containerPort" = 8083
                 },
               ]
@@ -88,16 +88,16 @@ resource "kubernetes_manifest" "deployment_argocd_server" {
                   "port" = 8080
                 }
                 "initialDelaySeconds" = 3
-                "periodSeconds" = 30
+                "periodSeconds"       = 30
               }
               "volumeMounts" = [
                 {
                   "mountPath" = "/app/config/ssh"
-                  "name" = "ssh-known-hosts"
+                  "name"      = "ssh-known-hosts"
                 },
                 {
                   "mountPath" = "/app/config/tls"
-                  "name" = "tls-certs"
+                  "name"      = "tls-certs"
                 },
               ]
             },
@@ -106,7 +106,7 @@ resource "kubernetes_manifest" "deployment_argocd_server" {
           "volumes" = [
             {
               "emptyDir" = {}
-              "name" = "static-files"
+              "name"     = "static-files"
             },
             {
               "configMap" = {

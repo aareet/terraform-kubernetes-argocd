@@ -3,14 +3,14 @@ resource "kubernetes_manifest" "role_argocd_application_controller" {
 
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "Role"
+    "kind"       = "Role"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "application-controller"
-        "app.kubernetes.io/name" = "argocd-application-controller"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-application-controller"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-application-controller"
+      "name"      = "argocd-application-controller"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "rules" = [

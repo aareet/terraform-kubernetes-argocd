@@ -3,12 +3,12 @@ resource "kubernetes_manifest" "clusterrole_argocd_server" {
 
   manifest = {
     "apiVersion" = "rbac.authorization.k8s.io/v1"
-    "kind" = "ClusterRole"
+    "kind"       = "ClusterRole"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "server"
-        "app.kubernetes.io/name" = "argocd-server"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-server"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
       "name" = "argocd-server"
     }

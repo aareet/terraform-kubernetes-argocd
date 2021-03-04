@@ -3,14 +3,14 @@ resource "kubernetes_manifest" "statefulset_argocd_application_controller" {
 
   manifest = {
     "apiVersion" = "apps/v1"
-    "kind" = "StatefulSet"
+    "kind"       = "StatefulSet"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "application-controller"
-        "app.kubernetes.io/name" = "argocd-application-controller"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-application-controller"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-application-controller"
+      "name"      = "argocd-application-controller"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
@@ -65,7 +65,7 @@ resource "kubernetes_manifest" "statefulset_argocd_application_controller" {
                 "--operation-processors",
                 "10",
               ]
-              "image" = "argoproj/argocd:v1.8.6"
+              "image"           = "argoproj/argocd:v1.8.6"
               "imagePullPolicy" = "Always"
               "livenessProbe" = {
                 "httpGet" = {
@@ -73,12 +73,12 @@ resource "kubernetes_manifest" "statefulset_argocd_application_controller" {
                   "port" = 8082
                 }
                 "initialDelaySeconds" = 5
-                "periodSeconds" = 10
+                "periodSeconds"       = 10
               }
               "name" = "argocd-application-controller"
               "ports" = [
                 {
-		  "protocol" = "TCP"
+                  "protocol"      = "TCP"
                   "containerPort" = 8082
                 },
               ]
@@ -88,7 +88,7 @@ resource "kubernetes_manifest" "statefulset_argocd_application_controller" {
                   "port" = 8082
                 }
                 "initialDelaySeconds" = 5
-                "periodSeconds" = 10
+                "periodSeconds"       = 10
               }
             },
           ]

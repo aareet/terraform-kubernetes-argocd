@@ -9,10 +9,10 @@ resource "kubernetes_manifest" "configmap_argocd_ssh_known_hosts_cm" {
     "kind" = "ConfigMap"
     "metadata" = {
       "labels" = {
-        "app.kubernetes.io/name" = "argocd-ssh-known-hosts-cm"
+        "app.kubernetes.io/name"    = "argocd-ssh-known-hosts-cm"
         "app.kubernetes.io/part-of" = "argocd"
       }
-      "name" = "argocd-ssh-known-hosts-cm"
+      "name"      = "argocd-ssh-known-hosts-cm"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
   }

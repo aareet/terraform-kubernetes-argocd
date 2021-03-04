@@ -3,22 +3,22 @@ resource "kubernetes_manifest" "service_argocd_redis" {
 
   manifest = {
     "apiVersion" = "v1"
-    "kind" = "Service"
+    "kind"       = "Service"
     "metadata" = {
       "labels" = {
         "app.kubernetes.io/component" = "redis"
-        "app.kubernetes.io/name" = "argocd-redis"
-        "app.kubernetes.io/part-of" = "argocd"
+        "app.kubernetes.io/name"      = "argocd-redis"
+        "app.kubernetes.io/part-of"   = "argocd"
       }
-      "name" = "argocd-redis"
+      "name"      = "argocd-redis"
       "namespace" = kubernetes_manifest.namespace_argocd.object.metadata.name
     }
     "spec" = {
       "ports" = [
         {
-	  "protocol" = "TCP"
-          "name" = "tcp-redis"
-          "port" = 6379
+          "protocol"   = "TCP"
+          "name"       = "tcp-redis"
+          "port"       = 6379
           "targetPort" = 6379
         },
       ]
